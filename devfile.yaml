@@ -7,7 +7,7 @@ components:
       image: quay.io/chapeaux/deno-che:latest
       env:
         - name: DENO_DIR
-          value: ${PROJECTS_ROOT}/.deno
+          value: .deno
       endpoints:
         - exposure: public
           name: deno
@@ -16,12 +16,12 @@ components:
       mountSources: true
       volumeMounts:
         - name: deno
-          path: ${PROJECTS_ROOT}/.deno
+          path: .deno
   - name: deno
     volume:
       size: 1G
 commands:
-  - id: 1-run
+  - id: SERVE
     exec:
       label: "Run the application"
       component: deno-www
@@ -29,3 +29,4 @@ commands:
       commandLine: "deno task serve"
       group:
         kind: run
+

@@ -1,7 +1,11 @@
-import { createApp, serveStatic } from "https://deno.land/x/servest@v1.3.1/mod.ts";
-const app = createApp();
-// All requests will be processed and matched files in "public" directory
-// are served automatically
-// Otherwise, request will be passed to next handler
-app.use(serveStatic("./public"));
-app.listen({ port: 8080 });
+import { Application } from "https://deno.land/x/oak/mod.ts";
+const app = new Application();
+app.use(async (ctx) => {
+  console.log(Deno.cwd()+'/public');
+  await ctx.send({
+    root: Deno.cwd()+'/public',
+    index: 'index.html'
+  });
+});
+await app.listen({ port: 8080 });
+
