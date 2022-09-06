@@ -5,6 +5,9 @@ components:
   - name: deno-www
     container:
       image: quay.io/chapeaux/deno-che:latest
+      env:
+        - name: DENO_DIR
+          value: ${PROJECTS_ROOT}/.deno
       endpoints:
         - exposure: public
           name: deno
@@ -13,7 +16,7 @@ components:
       mountSources: true
       volumeMounts:
         - name: deno
-          path: /home/user/.deno
+          path: ${PROJECTS_ROOT}/.deno
   - name: deno
     volume:
       size: 1G
