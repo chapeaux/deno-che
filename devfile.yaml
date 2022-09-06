@@ -21,7 +21,7 @@ components:
     volume:
       size: 1G
 commands:
-  - id: SERVE
+  - id: serve
     exec:
       label: "Run the application"
       component: deno-www
