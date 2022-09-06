@@ -7,7 +7,7 @@ components:
       image: quay.io/chapeaux/deno-che:latest
       env:
         - name: DENO_DIR
-          value: .deno
+          value: /.deno
       endpoints:
         - exposure: public
           name: deno
@@ -16,7 +16,7 @@ components:
       mountSources: true
       volumeMounts:
         - name: deno
-          path: .deno
+          path: /.deno
   - name: deno
     volume:
       size: 1G
