@@ -1,6 +1,6 @@
 schemaVersion: 2.1.0
 metadata:
-  name: deno-che
+  name: deno-starter
 components:
   - name: deno-www
     container:
@@ -11,6 +11,7 @@ components:
       endpoints:
         - exposure: public
           name: deno
+          protocol: https
           targetPort: 8080
       memoryLimit: 1G
       mountSources: true
@@ -21,12 +22,12 @@ components:
     volume:
       size: 1G
 commands:
-  - id: 1-run
-    exec:
-      label: "Run the application"
+  - exec:
+      label: "RUN the web server"
       component: deno-www
       workingDir: ${PROJECTS_ROOT}/deno-che
       commandLine: "deno task serve"
       group:
         kind: run
+    id: run-www-server
 
