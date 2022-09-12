@@ -25,7 +25,7 @@ commands:
   - exec:
       label: "RUN the web server"
       component: deno-www
-      workingDir: ${PROJECTS_ROOT}/deno-che
+      workingDir: ${PROJECTS_ROOT}/deno-starter
       commandLine: "deno task serve"
       group:
         kind: run
